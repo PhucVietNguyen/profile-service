@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: profile-service
+  datasource:
+    url: jdbc:mariadb://my-mariadb:3306/profile
+    tomcat:
+      connection-properties: useUnicode=true;characterEncoding=utf-8;
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlFtvrJw+2RIZ6gbf5WUk
+          YnnTom5tHVrhEmrglVv8NJ0sgRrjhVpXu2BYj19XhiQJFT63h0CfQi16pL6dVVRl
+          Rp2UIUx2Cc1h7YTQ57uWNNBcsfUAA7ba1Z1u8jrPaWH+FdwrN+EZJ1J6X79OmuAA
+          0cSmg1e3sfp9O97V/odYPvo+vvvD7oDWEegDbF8381C+JWtQumzNJoAq2BYeyoOM
+          i91KwOdz9ygG4tY4M+2ZQQci4LhEgk/OoEyMENlYskwjr3DXs/oN6r7KTD6Y9Ca3
+          8+GL4/ttx2KZpubjXswMAoMFXGhfiqFAWkMy8rxpvFEfsjChOu38gVEjhl0r7orj
+          EQIDAQAB
+          -----END PUBLIC KEY-----
+server:
+  port: 8191
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
