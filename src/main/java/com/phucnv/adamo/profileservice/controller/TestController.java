@@ -23,4 +23,10 @@ public class TestController {
   public ResponseEntity<?> send(@PathVariable String message) {
     return ResponseEntity.status(HttpStatus.OK).body(message);
   }
+
+  @GetMapping(value = "/miss/{id}")
+  @PreAuthorize("hasAuthority('UPDATE_PROFILE')")
+  public ResponseEntity<?> miss(@PathVariable Long id) {
+    return ResponseEntity.status(HttpStatus.OK).body(id);
+  }
 }
